@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess A Letter Game</title>
+</head>
+<body>
+	Use the box to enter the letter you chose. <br>
+
+Enter your the letters of your guess: <input type="text" id="pressedLetters" onkeyup="usedLetters()" onkeypress="reset()">
+
+<p id="results">Your guess: <span id="chosenLetters"></span></p>
+
+<script>
+// this program doesn't work, do a branch off master to try out ideas.
+var letters = ['a', 'b' 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var generatedLetter = Math.floor(Math.random() * 26);
+var displayRandomLetter = document.createElement("p");
+var getResult = document.getElementById("results");
+var retiredLetters = [];
+
+
+
+
+function usedLetters() {
+
+	var x = document.getElementById("pressedLetters").value;
+    var compare = x.toLowerCase();
+
+    //This line displays value just as user entered.
+    document.getElementById("chosenLetters").innerHTML = x;
+    
+	//This line actually pushes the lower cased letter for comparision to the letters array.
+	//console.log(retiredLetters);
+	retiredLetters.push(compare);
+	console.log(retiredLetters);
+
+}
+
+function reset() {
+	var x = document.getElementById("pressedLetters").value;
+}
+
+
+console.log(usedLetters());
+ 
+/*
+
+ for (z=0; z <10; z++)
+ {
+
+
+	if (document.getElementById("pressedLetters").value === letters[generatedLetter])
+ 	{
+ 	displayRandomLetter.innerHTML = ("You guessed correctly. This was the letter " +letters[generatedLetter] +".");
+ 	}
+ 	else {
+ 	displayRandomLetter.innerHTML = ("Not quite. Try again.");
+ 	}
+
+ 	getResult.appendChild(displayRandomLetter);
+
+ }*/
+
+</script>
+
+</body>
+</html>
