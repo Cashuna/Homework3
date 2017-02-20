@@ -6,50 +6,41 @@
 <body>
 	Use the box to enter the letter you chose. <br>
 
-Enter your the letters of your guess: <input type="text" id="pressedLetters" maxlength="15" onkeyup="usedLetters()">
+	Enter guesses here: <input type="text" id="pressedLetters" maxlength="10" onkeyup="usedLetters()">
 
-<p id="results">Your guess: <span id="chosenLetters"></span></p>
+	<p id="results"></p>
 
 <script>
-// this program doesn't work, do a branch off master to try out ideas.
 var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var generatedLetter = Math.floor(Math.random() * 26);
-var compareLetters = [];
+var compareLetters = []
 var displayRandomLetter = document.createElement("p");
 var getResult = document.getElementById("results");
-
-
-
 
 function usedLetters() {
 	var retiredLetters = [];
 	var retired = document.getElementById("pressedLetters").value;
     var compare = retired.toLowerCase();
 
-	//This line displays value just as user entered.
-    document.getElementById("chosenLetters").innerHTML = retired;
 	retiredLetters.push(compare);
 	var eval = retiredLetters[retiredLetters.length -1].split("", 10);
 	compareLetters = eval;
+	for (z=0; z <compareLetters.length; z++)
+ 	{
+		if (compareLetters[z] == letters[generatedLetter])
+		{
+ 			displayRandomLetter.innerHTML = ("You guessed correctly. This was the letter: " +letters[generatedLetter] +".");
+ 			alert("You Won!!");
+ 			break;
+ 		}
+ 		else
+ 		{
+	 		displayRandomLetter.innerHTML = ("Not quite. You chose " +compareLetters[z] +".");
+ 		}
+ 	} 
 }
 
-/*
-
- for (z=0; z <10; z++)
- {
-
-
-	if (document.getElementById("pressedLetters").value === letters[generatedLetter])
- 	{
- 	displayRandomLetter.innerHTML = ("You guessed correctly. This was the letter " +letters[generatedLetter] +".");
- 	}
- 	else {
- 	displayRandomLetter.innerHTML = ("Not quite. Try again.");
- 	}
-
- 	getResult.appendChild(displayRandomLetter);
-
- }*/
+getResult.appendChild(displayRandomLetter);
 
 </script>
 
