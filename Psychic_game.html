@@ -6,43 +6,33 @@
 <body>
 	Use the box to enter the letter you chose. <br>
 
-Enter your the letters of your guess: <input type="text" id="pressedLetters" onkeyup="usedLetters()" onkeypress="reset()">
+Enter your the letters of your guess: <input type="text" id="pressedLetters" maxlength="15" onkeyup="usedLetters()">
 
 <p id="results">Your guess: <span id="chosenLetters"></span></p>
 
 <script>
 // this program doesn't work, do a branch off master to try out ideas.
-var letters = ['a', 'b' 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var generatedLetter = Math.floor(Math.random() * 26);
+var compareLetters = [];
 var displayRandomLetter = document.createElement("p");
 var getResult = document.getElementById("results");
-var retiredLetters = [];
 
 
 
 
 function usedLetters() {
+	var retiredLetters = [];
+	var retired = document.getElementById("pressedLetters").value;
+    var compare = retired.toLowerCase();
 
-	var x = document.getElementById("pressedLetters").value;
-    var compare = x.toLowerCase();
-
-    //This line displays value just as user entered.
-    document.getElementById("chosenLetters").innerHTML = x;
-    
-	//This line actually pushes the lower cased letter for comparision to the letters array.
-	//console.log(retiredLetters);
+	//This line displays value just as user entered.
+    document.getElementById("chosenLetters").innerHTML = retired;
 	retiredLetters.push(compare);
-	console.log(retiredLetters);
-
+	var eval = retiredLetters[retiredLetters.length -1].split("", 10);
+	compareLetters = eval;
 }
 
-function reset() {
-	var x = document.getElementById("pressedLetters").value;
-}
-
-
-console.log(usedLetters());
- 
 /*
 
  for (z=0; z <10; z++)
